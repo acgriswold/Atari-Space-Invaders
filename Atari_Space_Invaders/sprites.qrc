@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>friendlies/tank_temp.png</file>
+        <file>friendlies/bullet_temp.png</file>
+    </qresource>
+</RCC>
