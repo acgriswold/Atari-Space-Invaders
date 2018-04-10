@@ -10,7 +10,7 @@ Tank::Tank(QGraphicsScene *scne){
     scene = scne;
 
     //set speed
-    speed = 10;
+    speed = 1;
     //set x & y
     int startX = 0;
     int startY = 200;

@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(step()));
-    timer->start(60);
+    timer->start(3);
 
     QTimer *timer1 = new QTimer(this);
     connect(timer1, SIGNAL(timeout()), scene, SLOT(advance()));

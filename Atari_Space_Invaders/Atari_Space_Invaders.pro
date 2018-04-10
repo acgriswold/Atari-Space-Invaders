@@ -17,13 +17,15 @@ SOURCES += main.cpp\
     gameplay.cpp \
     tank.cpp \
     bunker.cpp \
-    bullet.cpp
+    bullet.cpp \
+    tile.cpp
 
 HEADERS  += mainwindow.h \
     gameplay.h \
     tank.h \
     bunker.h \
-    bullet.h
+    bullet.h \
+    tile.h
 
 FORMS    += mainwindow.ui
 

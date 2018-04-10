@@ -35,6 +35,7 @@ private slots:
     void on_right_release();*/
 
     void step();
+
 private:
     Ui::MainWindow *ui;
 

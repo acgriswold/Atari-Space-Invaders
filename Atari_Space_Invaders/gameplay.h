@@ -26,12 +26,14 @@ public:
     void propose_move(Move mve);
     void propose_disable(Move mve);
 
+    void doCollision();
 private:
     int level;
     QGraphicsScene *scene;
 
     Tank *tank;
     Bunker *bunker;
+    Tile *tile;
 };
 
 #endif // GAMEPLAY_H

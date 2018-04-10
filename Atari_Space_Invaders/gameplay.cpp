@@ -39,7 +39,11 @@ void Gameplay::renderTank(){
 }
 
 void Gameplay::renderBunker(){
-
+    int startX = -600, startY = 0, cnt = 8;
+    for(int i = 0; i < cnt; i++){
+        bunker = new Bunker(scene, startX, startY);
+        startX += 150;
+    }
 }
 
 void Gameplay::renderAlien(int lvl){
@@ -56,4 +60,9 @@ void Gameplay::propose_disable(Move mve){
 
 void Gameplay::logic(){
     tank->movement();
+    doCollision();
+}
+
+void Gameplay::doCollision(){
+    //basic collision detection
 }
