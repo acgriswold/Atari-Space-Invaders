@@ -7,6 +7,7 @@
 
 #include "tank.h"
 #include "bunker.h"
+#include "squad.h"
 
 class Gameplay : public QObject
 {
@@ -19,7 +20,7 @@ public:
     void renderBorder();
     void renderTank();
     void renderBunker();
-    void renderAlien(int lvl);
+    void renderSquad(int lvl);
 
     void logic();
 
@@ -34,6 +35,7 @@ private:
     Tank *tank;
     Bunker *bunker;
     Tile *tile;
+    Squad *squad;
 };
 
 #endif // GAMEPLAY_H
