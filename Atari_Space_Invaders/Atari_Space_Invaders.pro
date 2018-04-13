@@ -18,14 +18,18 @@ SOURCES += main.cpp\
     tank.cpp \
     bunker.cpp \
     bullet.cpp \
-    tile.cpp
+    tile.cpp \
+    invader.cpp \
+    squad.cpp
 
 HEADERS  += mainwindow.h \
     gameplay.h \
     tank.h \
     bunker.h \
     bullet.h \
-    tile.h
+    tile.h \
+    invader.h \
+    squad.h
 
 FORMS    += mainwindow.ui
 

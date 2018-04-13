@@ -3,7 +3,7 @@
 Gameplay::Gameplay(QGraphicsScene *scne){
     scene = scne;
 
-    level = 0;
+    level = 10;
 }
 
 Gameplay::~Gameplay(){
@@ -15,7 +15,7 @@ void Gameplay::renderGame(){
     renderBorder();
     renderTank();
     renderBunker();
-    renderAlien(level);
+    renderSquad(level);
 }
 
 void Gameplay::renderBorder(){
@@ -46,8 +46,8 @@ void Gameplay::renderBunker(){
     }
 }
 
-void Gameplay::renderAlien(int lvl){
-
+void Gameplay::renderSquad(int lvl){
+    squad = new Squad(scene,lvl);
 }
 
 void Gameplay::propose_move(Move mve){
