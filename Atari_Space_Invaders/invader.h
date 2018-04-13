@@ -14,10 +14,15 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
+private slots:
+    void advance(int phase);
+
 private:
     QGraphicsScene *scene;
     QBrush brush;
     Invader *invader[5][11];
+
+    void hit();
 };
 
 #endif // INVADER_H

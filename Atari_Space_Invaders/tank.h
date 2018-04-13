@@ -33,6 +33,8 @@ private:
     bool left;
     bool fire;
     bool right;
+
+    bullet *bullt;
 };
 
 #endif // TANK_H

@@ -22,7 +22,8 @@ public:
     void renderBunker();
     void renderSquad(int lvl);
 
-    void logic();
+    void friendly_logic();
+    void squad_logic();
 
     void propose_move(Move mve);
     void propose_disable(Move mve);

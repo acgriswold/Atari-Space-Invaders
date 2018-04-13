@@ -1,12 +1,14 @@
 #ifndef SQUAD_H
 #define SQUAD_H
 
-#include <invader.h>
+#include "invader.h"
 
 class Squad
 {
 public:
     Squad(QGraphicsScene *scne, int lvl);
+
+    void moveSquad();
 
 private:
      QGraphicsScene *scene;

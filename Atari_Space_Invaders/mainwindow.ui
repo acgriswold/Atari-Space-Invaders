@@ -24,9 +24,27 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: blue;</string>
+     <string notr="true">background: transparent;;</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>50</y>
+      <width>1300</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="sprites.qrc">:/passives/sea_background.png</pixmap>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>graphicsView</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -49,6 +67,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="sprites.qrc"/>
+ </resources>
  <connections/>
 </ui>

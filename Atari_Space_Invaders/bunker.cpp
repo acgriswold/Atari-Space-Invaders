@@ -8,7 +8,7 @@ Bunker::Bunker(QGraphicsScene *scne, int startX, int startY){
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 4; j++){
             //build tiles
-            if(!(i >= 1 && (j == 1 || j == 2))){
+            if(!(i >= 2 && (j == 1 || j == 2))){
                 Tile *tile = new Tile(scene, x, y);
                 scene->addItem(tile);
             }

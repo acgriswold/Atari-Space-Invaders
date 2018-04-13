@@ -5,7 +5,9 @@ Tile::Tile(QGraphicsScene *scne, int startX, int startY){
 
     scene = scne;
 
-    brush.setTexture(QPixmap(":/friendlies/tank_temp.png").scaledToWidth(32, Qt::SmoothTransformation));
+    health = 3;
+
+    brush.setTexture(QPixmap(":/friendlies/sand_tile_init.png").scaledToWidth(32, Qt::SmoothTransformation));
 }
 
 QRectF Tile::boundingRect() const{
@@ -36,6 +38,19 @@ int Tile::get_height(){
 
 void Tile::hit(){
     qDebug() << "hit!";
-    scene->removeItem(this);
-    delete this;
+    health--;
+    scene->removeItem(scene->collidingItems(this)[0]);
+
+    if(health <= 0){
+        scene->removeItem(this);
+        delete this;
+    }
+    else if(health == 2){
+        brush.setTexture(QPixmap(":/friendlies/sand_tile_damaged1.png").scaledToWidth(32, Qt::SmoothTransformation));
+        this->update(boundingRect());
+    }
+    else if (health == 1){
+        brush.setTexture(QPixmap(":/friendlies/sand_tile_damaged2.png").scaledToWidth(32, Qt::SmoothTransformation));
+        this->update(boundingRect());
+    }
 }

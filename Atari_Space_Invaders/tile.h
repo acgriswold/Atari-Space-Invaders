@@ -24,6 +24,8 @@ protected:
 private:
     QBrush brush;
     QGraphicsScene *scene;
+
+    int health;
 };
 
 #endif // TILE_H

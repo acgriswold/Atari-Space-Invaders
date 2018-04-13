@@ -2,5 +2,9 @@
     <qresource prefix="/">
         <file>friendlies/tank_temp.png</file>
         <file>friendlies/bullet_temp.png</file>
+        <file>friendlies/sand_tile_damaged1.png</file>
+        <file>friendlies/sand_tile_damaged2.png</file>
+        <file>friendlies/sand_tile_init.png</file>
+        <file>passives/sea_background.png</file>
     </qresource>
 </RCC>

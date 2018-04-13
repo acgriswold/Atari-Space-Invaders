@@ -3,7 +3,7 @@
 Gameplay::Gameplay(QGraphicsScene *scne){
     scene = scne;
 
-    level = 10;
+    level = 0;
 }
 
 Gameplay::~Gameplay(){
@@ -39,15 +39,19 @@ void Gameplay::renderTank(){
 }
 
 void Gameplay::renderBunker(){
-    int startX = -600, startY = 0, cnt = 8;
+    int startX = -505, startY = 75, cnt = 4;
+    int adder = 290;
     for(int i = 0; i < cnt; i++){
         bunker = new Bunker(scene, startX, startY);
-        startX += 150;
+        startX += adder;
+        //spacing correction
+        if(i%2 == 0){adder += 15;}
+        else if(i%2 == 1){adder = 285;}
     }
 }
 
 void Gameplay::renderSquad(int lvl){
-    squad = new Squad(scene,lvl);
+    squad = new Squad(scene, lvl);
 }
 
 void Gameplay::propose_move(Move mve){
@@ -58,11 +62,10 @@ void Gameplay::propose_disable(Move mve){
     tank->disable_move(mve);
 }
 
-void Gameplay::logic(){
+void Gameplay::friendly_logic(){
     tank->movement();
-    doCollision();
 }
 
-void Gameplay::doCollision(){
-    //basic collision detection
+void Gameplay::squad_logic(){
+    squad->moveSquad();
 }

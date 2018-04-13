@@ -1,4 +1,5 @@
 #include "tank.h"
+#include "bullet.h"
 
 Tank::Tank(QGraphicsScene *scne){
     //set moves
@@ -13,15 +14,15 @@ Tank::Tank(QGraphicsScene *scne){
     speed = 1;
     //set x & y
     int startX = 0;
-    int startY = 200;
+    int startY = 245;
 
     setPos(startX, startY);
 
-    brush.setTexture(QPixmap(":/friendlies/tank_temp.png").scaledToWidth(64, Qt::SmoothTransformation));
+    brush.setTexture(QPixmap(":/friendlies/tank_temp.png").scaledToHeight(32, Qt::SmoothTransformation));
 }
 
 QRectF Tank::boundingRect() const{
-    return QRect(0, 0, 64, 64);
+    return QRect(0, 0, 64, 32);
 }
 
 void Tank::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
@@ -36,18 +37,25 @@ void Tank::advance(int phase){
 
 void Tank::movement(){
     if(left){
-        qDebug() << "Left!";
-        setPos(mapToParent(-speed,0));
+        if((this->x()-speed) > ((scene->width()/2)*-1)){
+            qDebug() << "Left!";
+            setPos(mapToParent(-speed,0));
+        }
     }
     else if(right){
-        qDebug() << "Right!";
-        setPos(mapToParent(speed,0));
+        if((this->x()+this->boundingRect().width()+speed) < (scene->width()/2)){
+            qDebug() << "Right!";
+            setPos(mapToParent(speed,0));
+        }
     }
 
     if(fire){
-        qDebug() << "Fire!";
-        bullet *item = new bullet(this->x(), this->y());
-        scene->addItem(item);
+        //if there is no other bullet on the screne
+        if(!(scene->items().indexOf(bullt) >= 0)){
+            qDebug() << "Fire!";
+            bullt = new bullet(this->x(), this->y());
+            scene->addItem(bullt);
+        }
     }
 }
 

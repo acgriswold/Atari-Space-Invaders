@@ -29,3 +29,8 @@ Squad::Squad(QGraphicsScene *scne, int lvl)
         startX = -600;
     }
 }
+
+void Squad::moveSquad(){
+
+
+}

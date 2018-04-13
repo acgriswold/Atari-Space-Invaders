@@ -32,9 +32,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(shortcutLeft, SIGNAL(deactivated()), this, SLOT(on_left_released()));
     QObject::connect(shortcutRight, SIGNAL(deactivated()), this, SLOT(on_right_released()));*/
 
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(step()));
-    timer->start(3);
+    timer_friendly = new QTimer(this);
+    connect(timer_friendly, SIGNAL(timeout()), this, SLOT(step_friendly()));
+    timer_friendly->start(3);
+
+    timer_foe = new QTimer(this);
+    connect(timer_foe, SIGNAL(timeout()), this, SLOT(step_foe()));
+    timer_foe->start(105);
 
     QTimer *timer1 = new QTimer(this);
     connect(timer1, SIGNAL(timeout()), scene, SLOT(advance()));
@@ -45,8 +49,12 @@ MainWindow::~MainWindow(){
     delete ui;
 }
 
-void MainWindow::step(){
-    game->logic();
+void MainWindow::step_friendly(){
+    game->friendly_logic();
+}
+
+void MainWindow::step_foe(){
+    game->friendly_logic();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *e){

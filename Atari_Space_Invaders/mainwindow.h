@@ -34,13 +34,15 @@ private slots:
     void on_left_release();
     void on_right_release();*/
 
-    void step();
+    void step_friendly();
+    void step_foe();
 
 private:
     Ui::MainWindow *ui;
 
     QGraphicsScene *scene;
-    QTimer *timer;
+    QTimer *timer_friendly;
+    QTimer *timer_foe;
     Gameplay *game;
 };
 
