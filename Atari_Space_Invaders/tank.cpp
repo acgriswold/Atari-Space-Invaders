@@ -13,8 +13,14 @@ Tank::Tank(QGraphicsScene *scne){
     //set speed
     speed = 1;
     //set x & y
-    int startX = 0;
+    int startX;
     int startY = 245;
+    if(rand()%2 == 0){
+        startX = rand()%500;
+    }
+    else {
+        startX = (-1*rand()%500);
+    }
 
     setPos(startX, startY);
 
@@ -84,4 +90,12 @@ void Tank::disable_move(Move mve){
     else if(mve == Fire){
         fire = false;
     }
+}
+
+void Tank::hit(){
+    qDebug() << "hit!";
+    //scene->removeItem(scene->collidingItems(this)[0]);
+
+    scene->removeItem(this);
+    delete this;
 }

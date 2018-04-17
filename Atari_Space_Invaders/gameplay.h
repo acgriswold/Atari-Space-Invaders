@@ -29,6 +29,13 @@ public:
     void propose_disable(Move mve);
 
     void doCollision();
+
+    int get_current_score();
+    int get_current_lives();
+
+signals:
+    void collision();
+
 private:
     int level;
     QGraphicsScene *scene;
@@ -37,6 +44,10 @@ private:
     Bunker *bunker;
     Tile *tile;
     Squad *squad;
+
+    int score;
+
+    int lives;
 };
 
 #endif // GAMEPLAY_H

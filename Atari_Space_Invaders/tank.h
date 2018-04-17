@@ -8,7 +8,7 @@
 
 #include "bullet.h"
 
-enum Move{Left, Right, Fire};
+enum Move{Left, Right, Fire, Hit};
 
 class Tank : public QGraphicsItem
 {
@@ -21,6 +21,8 @@ public:
 
     void set_move(Move mve);
     void disable_move(Move mve);
+
+    void hit();
 
 protected:
     void advance(int phase);

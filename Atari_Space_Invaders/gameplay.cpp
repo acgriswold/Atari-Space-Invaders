@@ -3,7 +3,9 @@
 Gameplay::Gameplay(QGraphicsScene *scne){
     scene = scne;
 
+    lives = 3;
     level = 0;
+    score = 0;
 }
 
 Gameplay::~Gameplay(){
@@ -55,17 +57,42 @@ void Gameplay::renderSquad(int lvl){
 }
 
 void Gameplay::propose_move(Move mve){
-    tank->set_move(mve);
+    if(scene->items().indexOf(tank) >= 0){
+        if(mve == Hit){ tank->hit(); lives--; if(lives >= 0){renderTank();} else{emit collision();}}
+        else{
+            tank->set_move(mve);
+        }
+    }
 }
 
 void Gameplay::propose_disable(Move mve){
-    tank->disable_move(mve);
+    if(scene->items().indexOf(tank) >= 0){
+        tank->disable_move(mve);
+    }
 }
 
 void Gameplay::friendly_logic(){
-    tank->movement();
+    if(scene->items().indexOf(tank) >= 0){
+        tank->movement();
+        if(!scene->collidingItems(tank).isEmpty()){
+            qDebug() << "collision!!" << scene->collidingItems(tank)[0]->type();
+            tank->hit();
+            lives--;
+            if(lives >= 0){
+                renderTank();
+            }
+        }
+    }
 }
 
 void Gameplay::squad_logic(){
     squad->moveSquad();
+}
+
+int Gameplay::get_current_score(){
+    return score;
+}
+
+int Gameplay::get_current_lives(){
+    return lives;
 }

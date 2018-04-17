@@ -37,6 +37,14 @@ private slots:
     void step_friendly();
     void step_foe();
 
+    void end_game();
+
+    void on_start_button_clicked();
+
+    void on_controls_button_clicked();
+
+    void on_button_return_clicked();
+
 private:
     Ui::MainWindow *ui;
 

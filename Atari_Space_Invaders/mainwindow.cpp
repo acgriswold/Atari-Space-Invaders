@@ -43,6 +43,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer *timer1 = new QTimer(this);
     connect(timer1, SIGNAL(timeout()), scene, SLOT(advance()));
     timer1->start(55);
+
+    connect(game, SIGNAL(collision()), this, SLOT(end_game()));
 }
 
 MainWindow::~MainWindow(){
@@ -54,7 +56,9 @@ void MainWindow::step_friendly(){
 }
 
 void MainWindow::step_foe(){
-    game->friendly_logic();
+    game->squad_logic();
+    ui->score_board->display(game->get_current_score());
+    ui->live_board->display(game->get_current_lives());
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *e){
@@ -66,6 +70,9 @@ void MainWindow::keyPressEvent(QKeyEvent *e){
     }
     else if(e->key() == Qt::Key_Space){
         game->propose_move(Fire);
+    }
+    else if(e->key() == Qt::Key_H){
+        game->propose_move(Hit);
     }
 }
 
@@ -99,3 +106,39 @@ void MainWindow::on_right_release(){
 void MainWindow::on_up_release(){
     game->propose_disable(Fire);
 }*/
+
+void MainWindow::end_game(){
+    timer_friendly->stop();
+    timer_foe->stop();
+
+    QString message = "You successfully defended the nation!  For a couple days that is... we still got obliterated... Try again?";
+
+    if(ui->score_board->value() == 0){
+        message = "Are you kidding me? That's your score? You have to play again to make up for that!";
+    }
+    else if(ui->score_board->value() <= 10000){
+        message = "Nice try, but you could do better...  Play again?";
+    }
+
+    bool close = false;
+    if (QMessageBox::Yes == QMessageBox::question(this, "Close Confirmation", message, QMessageBox::Yes | QMessageBox::No)) {
+         qApp->quit();
+         QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+    }
+    else {
+        close = true;
+    }
+    if(close) this->close();
+}
+
+void MainWindow::on_start_button_clicked(){
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_controls_button_clicked(){
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_button_return_clicked(){
+    ui->stackedWidget->setCurrentIndex(0);
+}
