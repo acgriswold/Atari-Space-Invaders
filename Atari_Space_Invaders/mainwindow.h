@@ -36,6 +36,7 @@ private slots:
 
     void step_friendly();
     void step_foe();
+    void enemy_increase();
 
     void end_game();
 

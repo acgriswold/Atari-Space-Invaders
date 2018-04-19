@@ -15,6 +15,7 @@ public:
 
 signals:
    void add_score(int);
+   void level_complete();
 
 private slots:
    void enemy_value(int);
@@ -26,6 +27,8 @@ private:
      int startY;
 
      Invader *(invader[5][11]);
+
+     int invader_count;
 };
 
 #endif // SQUAD_H

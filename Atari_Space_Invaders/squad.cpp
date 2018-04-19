@@ -39,6 +39,8 @@ Squad::Squad(QGraphicsScene *scne, int lvl)
         currentY = currentY + 40;
         currentX = startX;
     }
+
+    invader_count = 55;
 }
 
 void Squad::moveSquad(){
@@ -101,5 +103,9 @@ void Squad::fireSquad(){
 
 void Squad::enemy_value(int b){
     emit add_score(b);
+    invader_count--;
+    if(invader_count <= 0){
+        emit level_complete();
+    }
 }
 

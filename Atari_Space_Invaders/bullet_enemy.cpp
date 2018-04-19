@@ -3,9 +3,9 @@
 bullet_enemy::bullet_enemy(int x, int y){
     setPos((x+20), y);
 
-    speed = 32;
+    speed = 25;
 
-    brush.setTexture(QPixmap(":/friendlies/bullet_temp.png").scaledToWidth(16, Qt::SmoothTransformation));
+    brush.setTexture(QPixmap(":/friendlies/bubble.png").scaledToWidth(16, Qt::SmoothTransformation));
 }
 
 QRectF bullet_enemy::boundingRect() const{

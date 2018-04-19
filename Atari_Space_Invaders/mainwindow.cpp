@@ -45,6 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
     timer1->start(55);
 
     connect(game, SIGNAL(collision()), this, SLOT(end_game()));
+    connect(game, SIGNAL(carlos()), this, SLOT(enemy_increase()));
 }
 
 MainWindow::~MainWindow(){
@@ -63,6 +64,14 @@ void MainWindow::step_foe(){
     if(ui->stackedWidget->currentIndex() == 1){
         game->squad_logic();
     }
+}
+
+void MainWindow::enemy_increase(){
+    int currentint = timer_foe->interval();
+    timer_foe->stop();
+    currentint -= 100;
+    if(currentint < 105){currentint = 105;}
+    timer_foe->start(currentint);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *e){

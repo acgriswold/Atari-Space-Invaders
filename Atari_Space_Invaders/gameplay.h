@@ -35,9 +35,11 @@ public:
 
 signals:
     void collision();
+    void carlos();
 
 private slots:
     void new_score(int);
+    void charlie();
 
 private:
     int level;

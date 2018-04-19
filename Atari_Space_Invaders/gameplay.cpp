@@ -55,6 +55,7 @@ void Gameplay::renderBunker(){
 void Gameplay::renderSquad(int lvl){
     squad = new Squad(scene, lvl);
     connect(squad, SIGNAL(add_score(int)),this,SLOT(new_score(int)));
+    connect(squad, SIGNAL(level_complete()),this,SLOT(charlie()));
 }
 
 void Gameplay::propose_move(Move mve){
@@ -102,4 +103,12 @@ int Gameplay::get_current_lives(){
 
 void Gameplay::new_score(int a){
     score+=a;
+}
+
+void Gameplay::charlie(){
+    delete squad;
+    level++;
+    lives++;
+    renderSquad(level);
+    emit carlos();
 }
