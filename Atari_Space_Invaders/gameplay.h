@@ -37,7 +37,6 @@ signals:
     void collision();
 
 private slots:
-
     void new_score(int);
 
 private:

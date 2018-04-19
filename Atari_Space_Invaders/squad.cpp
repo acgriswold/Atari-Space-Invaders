@@ -34,6 +34,7 @@ Squad::Squad(QGraphicsScene *scne, int lvl)
             invader[rows][cols] = item;
             scene->addItem(invader[rows][cols]);
             currentX = currentX + 40;
+            connect(invader[rows][cols], SIGNAL(enemy_hit(int)),this,SLOT(enemy_value(int)));
         }
         currentY = currentY + 40;
         currentX = startX;
@@ -98,8 +99,7 @@ void Squad::fireSquad(){
     }
 }
 
-void Squad::enemy_value(int b)
-{
+void Squad::enemy_value(int b){
     emit add_score(b);
 }
 

@@ -7,6 +7,8 @@ Invader::Invader(QGraphicsScene *scne, int startX, int startY, Typee tpe){
 
     setPos(startX, startY);
 
+    body = tpe;
+
     if(body == Dolphin){
         brush.setTexture(QPixmap(":/friendlies/dolphin.png").scaledToWidth(33, Qt::SmoothTransformation));
     }
@@ -38,15 +40,16 @@ void Invader::advance(int phase){
     }
 }
 
-void Invader::hit(){
+void Invader::hit(){    
     scene->removeItem(scene->collidingItems(this)[0]);
     scene->removeItem(this);
-    delete this;
 
     if(body == Dolphin){emit enemy_hit(40);}
     else if(body == Star){emit enemy_hit(20);}
     else if(body == Octo){emit enemy_hit(10);}
     else if(body == Jelly){emit enemy_hit(150);}
+
+    delete this;
 }
 
 void Invader::move(int x, int y){

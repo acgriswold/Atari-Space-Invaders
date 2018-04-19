@@ -54,6 +54,7 @@ void Gameplay::renderBunker(){
 
 void Gameplay::renderSquad(int lvl){
     squad = new Squad(scene, lvl);
+    connect(squad, SIGNAL(add_score(int)),this,SLOT(new_score(int)));
 }
 
 void Gameplay::propose_move(Move mve){
@@ -100,5 +101,5 @@ int Gameplay::get_current_lives(){
 }
 
 void Gameplay::new_score(int a){
- score+=a;
+    score+=a;
 }

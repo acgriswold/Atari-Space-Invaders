@@ -54,14 +54,14 @@ MainWindow::~MainWindow(){
 void MainWindow::step_friendly(){
     if(ui->stackedWidget->currentIndex() == 1){
         game->friendly_logic();
+        ui->score_board->display(game->get_current_score());
+        ui->live_board->display(game->get_current_lives());
     }
 }
 
 void MainWindow::step_foe(){
     if(ui->stackedWidget->currentIndex() == 1){
         game->squad_logic();
-        ui->score_board->display(game->get_current_score());
-        ui->live_board->display(game->get_current_lives());
     }
 }
 
