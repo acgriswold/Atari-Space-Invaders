@@ -33,8 +33,14 @@ public:
     int get_current_score();
     int get_current_lives();
 
+
 signals:
     void collision();
+
+private slots:
+
+    void new_score(int);
+
 
 private:
     int level;
