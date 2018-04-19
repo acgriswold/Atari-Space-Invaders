@@ -1,11 +1,14 @@
 #include "gameplay.h"
 
+
 Gameplay::Gameplay(QGraphicsScene *scne){
     scene = scne;
 
     lives = 3;
     level = 0;
     score = 0;
+
+
 }
 
 Gameplay::~Gameplay(){
@@ -54,11 +57,12 @@ void Gameplay::renderBunker(){
 
 void Gameplay::renderSquad(int lvl){
     squad = new Squad(scene, lvl);
+    connect(squad, SIGNAL(add_score(int)),this,SLOT(new_score(int)));
 }
 
 void Gameplay::propose_move(Move mve){
     if(scene->items().indexOf(tank) >= 0){
-        if(mve == Hit){ squad->fireSquad();}//tank->hit(); lives--;}
+        if(mve == Hit){ tank->hit(); lives--; if(lives >= 0){renderTank();} else{emit collision();}}
         else{
             tank->set_move(mve);
         }
@@ -81,13 +85,12 @@ void Gameplay::friendly_logic(){
             if(lives >= 0){
                 renderTank();
             }
-            else{emit collision();}
         }
     }
 }
 
 void Gameplay::squad_logic(){
-    squad->moveSquad();
+    //squad->moveSquad();
 }
 
 int Gameplay::get_current_score(){
@@ -96,4 +99,9 @@ int Gameplay::get_current_score(){
 
 int Gameplay::get_current_lives(){
     return lives;
+}
+
+void Gameplay::new_score(int a)
+{
+ score+=a;
 }

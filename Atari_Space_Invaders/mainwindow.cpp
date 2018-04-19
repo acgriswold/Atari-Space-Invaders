@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     timer_foe = new QTimer(this);
     connect(timer_foe, SIGNAL(timeout()), this, SLOT(step_foe()));
-    timer_foe->start(1000);
+    timer_foe->start(105);
 
     QTimer *timer1 = new QTimer(this);
     connect(timer1, SIGNAL(timeout()), scene, SLOT(advance()));
@@ -52,17 +52,13 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::step_friendly(){
-    if(ui->stackedWidget->currentIndex() == 1){
-        game->friendly_logic();
-    }
+    game->friendly_logic();
 }
 
 void MainWindow::step_foe(){
-    if(ui->stackedWidget->currentIndex() == 1){
-        game->squad_logic();
-        ui->score_board->display(game->get_current_score());
-        ui->live_board->display(game->get_current_lives());
-    }
+    game->squad_logic();
+    ui->score_board->display(game->get_current_score());
+    ui->live_board->display(game->get_current_lives());
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *e){
