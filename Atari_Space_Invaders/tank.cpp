@@ -1,5 +1,4 @@
 #include "tank.h"
-#include "bullet.h"
 
 Tank::Tank(QGraphicsScene *scne){
     //set moves

@@ -58,7 +58,7 @@ void Gameplay::renderSquad(int lvl){
 
 void Gameplay::propose_move(Move mve){
     if(scene->items().indexOf(tank) >= 0){
-        if(mve == Hit){ tank->hit(); lives--; if(lives >= 0){renderTank();} else{emit collision();}}
+        if(mve == Hit){ squad->fireSquad();}//tank->hit(); lives--; if(lives >= 0){renderTank();} else{emit collision();}}
         else{
             tank->set_move(mve);
         }
