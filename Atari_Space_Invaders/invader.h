@@ -24,7 +24,6 @@ private slots:
 private:
     QGraphicsScene *scene;
     QBrush brush;
-    Invader *invader[5][11];
 
     void hit();
 };
