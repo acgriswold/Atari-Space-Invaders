@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     bullet.cpp \
     tile.cpp \
     squad.cpp \
-    invader.cpp
+    invader.cpp \
+    bullet_enemy.cpp
 
 HEADERS  += mainwindow.h \
     gameplay.h \
@@ -29,7 +30,8 @@ HEADERS  += mainwindow.h \
     bullet.h \
     tile.h \
     squad.h \
-    invader.h
+    invader.h \
+    bullet_enemy.h
 
 FORMS    += mainwindow.ui
 

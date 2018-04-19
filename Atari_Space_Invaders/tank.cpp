@@ -1,5 +1,4 @@
 #include "tank.h"
-#include "bullet.h"
 
 Tank::Tank(QGraphicsScene *scne){
     //set moves
@@ -24,7 +23,7 @@ Tank::Tank(QGraphicsScene *scne){
 
     setPos(startX, startY);
 
-    brush.setTexture(QPixmap(":/friendlies/crab.png").scaledToHeight(32, Qt::SmoothTransformation));
+    brush.setTexture(QPixmap(":/friendlies/tank_temp.png").scaledToHeight(32, Qt::SmoothTransformation));
 }
 
 QRectF Tank::boundingRect() const{

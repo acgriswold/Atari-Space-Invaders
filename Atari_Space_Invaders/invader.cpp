@@ -1,8 +1,6 @@
 #include "invader.h"
 
-Invader::Invader(QGraphicsScene *scne, int startX, int startY, Typee tye){
-
-    body = tye;
+Invader::Invader(QGraphicsScene *scne, int startX, int startY, Typee tpe){
 
     //finding scene
     scene = scne;
@@ -41,14 +39,22 @@ void Invader::advance(int phase){
 }
 
 void Invader::hit(){
-
-     if(body == Dolphin){emit enemy_hit(40);}
-    else if(body == Star){emit enemy_hit(20);}
-    else if(body == Octo){emit enemy_hit(10);}
-    else if(body == Jelly){emit enemy_hit(150);}
-
     scene->removeItem(scene->collidingItems(this)[0]);
     scene->removeItem(this);
     delete this;
+
+    if(body == Dolphin){emit enemy_hit(40);}
+    else if(body == Star){emit enemy_hit(20);}
+    else if(body == Octo){emit enemy_hit(10);}
+    else if(body == Jelly){emit enemy_hit(150);}
 }
 
+void Invader::move(int x, int y){
+    setPos(x, y);
+}
+
+void Invader::fire(){
+    qDebug() << "Enemy Fire!";
+    bullet_enemy *bullt = new bullet_enemy(this->x(), (this->y()+this->boundingRect().height()));
+    scene->addItem(bullt);
+}
