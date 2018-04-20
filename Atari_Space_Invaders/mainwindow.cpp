@@ -46,6 +46,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(game, SIGNAL(collision()), this, SLOT(end_game()));
     connect(game, SIGNAL(carlos()), this, SLOT(enemy_increase()));
+
+    backgroundMusic = new QMediaPlayer();
+    backgroundMusic->setMedia(QUrl("qrc:/sounds/gameMusic.mp3"));
+    playlist = new QMediaPlaylist();
+    playlist->addMedia(QUrl("qrc:/sounds/gameMusic.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+    backgroundMusic->setPlaylist(playlist);
+    backgroundMusic->play();
 }
 
 MainWindow::~MainWindow(){

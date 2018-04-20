@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <QDebug>
 #include <QObject>
+#include <QMediaPlayer>
 
 #include "bullet_enemy.h"
 
@@ -34,6 +35,8 @@ private:
     Typee body;
 
     void hit();
+
+    QMediaPlayer *fireSound;
 };
 
 #endif // INVADER_H

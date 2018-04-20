@@ -24,6 +24,10 @@ Tank::Tank(QGraphicsScene *scne){
     setPos(startX, startY);
 
     brush.setTexture(QPixmap(":/friendlies/crab.png").scaledToHeight(32, Qt::SmoothTransformation));
+
+    //set the firing sound for the tank
+    fireSound = new QMediaPlayer();
+    fireSound->setMedia(QUrl("qrc:/sounds/shoot.wav"));
 }
 
 QRectF Tank::boundingRect() const{
@@ -60,6 +64,8 @@ void Tank::movement(){
             qDebug() << "Fire!";
             bullt = new bullet(this->x(), this->y());
             scene->addItem(bullt);
+            //play the firing sound for the tank
+            fireSound->play();
         }
     }
 }

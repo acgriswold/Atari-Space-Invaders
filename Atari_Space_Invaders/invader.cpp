@@ -21,6 +21,9 @@ Invader::Invader(QGraphicsScene *scne, int startX, int startY, Typee tpe){
     else if (body == Jelly){
         brush.setTexture(QPixmap(":/friendlies/bubble.png").scaledToWidth(33, Qt::SmoothTransformation));
     }
+
+    fireSound = new QMediaPlayer();
+    fireSound->setMedia(QUrl("qrc:sounds/bubble.mp3"));
 }
 
 QRectF Invader::boundingRect() const{
@@ -60,4 +63,5 @@ void Invader::fire(){
     qDebug() << "Enemy Fire!";
     bullet_enemy *bullt = new bullet_enemy(this->x(), (this->y()+this->boundingRect().height()));
     scene->addItem(bullt);
+    fireSound->play();
 }
