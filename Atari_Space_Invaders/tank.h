@@ -40,6 +40,7 @@ private:
     bullet *bullt;
 
     QMediaPlayer *fireSound;
+    QMediaPlayer *crabHit;
 };
 
 #endif // TANK_H

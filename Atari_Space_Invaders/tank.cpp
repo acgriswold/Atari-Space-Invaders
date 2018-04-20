@@ -28,6 +28,9 @@ Tank::Tank(QGraphicsScene *scne){
     //set the firing sound for the tank
     fireSound = new QMediaPlayer();
     fireSound->setMedia(QUrl("qrc:/sounds/shoot.wav"));
+    //set the explosion sound when the crab is hit
+    crabHit = new QMediaPlayer();
+    crabHit->setMedia(QUrl("qrc:/sounds/explosion.wav"));
 }
 
 QRectF Tank::boundingRect() const{
@@ -98,6 +101,7 @@ void Tank::disable_move(Move mve){
 }
 
 void Tank::hit(){
+    crabHit->play();
     qDebug() << "hit!";
     //scene->removeItem(scene->collidingItems(this)[0]);
 

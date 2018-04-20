@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     timer_friendly = new QTimer(this);
     connect(timer_friendly, SIGNAL(timeout()), this, SLOT(step_friendly()));
-    timer_friendly->start(3);
+    timer_friendly->start(1);
 
     timer_foe = new QTimer(this);
     connect(timer_foe, SIGNAL(timeout()), this, SLOT(step_foe()));
@@ -47,6 +47,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(game, SIGNAL(collision()), this, SLOT(end_game()));
     connect(game, SIGNAL(carlos()), this, SLOT(enemy_increase()));
 
+    //setting the background music to play in an endless loop
     backgroundMusic = new QMediaPlayer();
     backgroundMusic->setMedia(QUrl("qrc:/sounds/gameMusic.mp3"));
     playlist = new QMediaPlaylist();

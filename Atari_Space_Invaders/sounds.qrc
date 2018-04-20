@@ -3,5 +3,6 @@
         <file>bubble.mp3</file>
         <file>gameMusic.mp3</file>
         <file>shoot.wav</file>
+        <file>explosion.wav</file>
     </qresource>
 </RCC>
