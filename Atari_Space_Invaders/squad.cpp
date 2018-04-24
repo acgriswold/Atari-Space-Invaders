@@ -5,18 +5,17 @@ Squad::Squad(QGraphicsScene *scne, int lvl)
     scene = scne;
     speed = 50;
     fire_rate = 10;
-    //set the position based on the level
-    int levelPos = lvl * 10;
 
     //set the position
     startX = -600;
     startY = -250;
 
     //check to make sure the invaders do not go past the bunkers
-    if(lvl <= 10)
-    {
+    //set the position based on the level
+    /*int levelPos = lvl * 10;
+    if(lvl <= 10){
         startY = startY + levelPos;
-    }
+    }*/
 
     Typee tpe;
 
@@ -49,6 +48,8 @@ void Squad::moveSquad(){
     int currentY = startY;
     int maxX = -650;
     int minX = 650;
+
+    invader_count;
     for(int rows = 0; rows <= 4; rows++)
     {
         for(int cols = 0; cols <= 10; cols++)
@@ -78,6 +79,10 @@ void Squad::moveSquad(){
     }
     else{
         startX = startX + speed;
+    }
+
+    if(invader_count <= 0){
+        emit level_complete();
     }
 }
 

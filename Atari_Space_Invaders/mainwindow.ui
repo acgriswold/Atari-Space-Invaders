@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_3">
      <widget class="QLabel" name="label_4">
@@ -192,6 +192,22 @@
       </property>
       <property name="styleSheet">
        <string notr="true">border: 0px;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>1311</width>
+        <height>601</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: rgba(0, 85, 255, .25);</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>

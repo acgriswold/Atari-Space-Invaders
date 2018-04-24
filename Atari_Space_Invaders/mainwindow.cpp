@@ -69,8 +69,8 @@ void MainWindow::step_foe(){
 void MainWindow::enemy_increase(){
     int currentint = timer_foe->interval();
     timer_foe->stop();
-    currentint -= 100;
-    if(currentint < 105){currentint = 105;}
+    currentint -= 50;
+    if(currentint < 500){currentint = 500;}
     timer_foe->start(currentint);
 }
 
