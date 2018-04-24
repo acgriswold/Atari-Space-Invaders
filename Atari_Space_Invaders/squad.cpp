@@ -4,6 +4,7 @@ Squad::Squad(QGraphicsScene *scne, int lvl)
 {
     scene = scne;
     speed = 50;
+    fire_rate = 10;
     //set the position based on the level
     int levelPos = lvl * 10;
 
@@ -62,6 +63,8 @@ void Squad::moveSquad(){
                 if(invader[rows][cols]->x() + invader[rows][cols]->boundingRect().width() > maxX){maxX = invader[rows][cols]->x() + invader[rows][cols]->boundingRect().width();}
 
                 if(invader[rows][cols]->x() < minX){minX = invader[rows][cols]->x();}
+
+                invader[rows][cols]->cycle_sprite(speed);
             }
         }
         //set the position for the next y move
@@ -79,7 +82,7 @@ void Squad::moveSquad(){
 }
 
 void Squad::fireSquad(){
-    if(rand()%100 <= 33){
+    if(rand()%100 <= fire_rate){
         int cols = rand()%11;
         int lowest_row = -1;
         for(int rows = 0; rows <= 4; rows++)
@@ -99,6 +102,8 @@ void Squad::enemy_value(int b){
     invader_count--;
     if(invader_count <= 0){
         emit level_complete();
+
+        if(fire_rate <= 75)fire_rate+=5;
     }
 }
 

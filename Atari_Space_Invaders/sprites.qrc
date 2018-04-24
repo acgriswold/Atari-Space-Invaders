@@ -14,5 +14,7 @@
         <file>friendlies/octopus2.png</file>
         <file>friendlies/star.png</file>
         <file>friendlies/star2.png</file>
+        <file>foes/jelly_t1.png</file>
+        <file>foes/jelly_t2.png</file>
     </qresource>
 </RCC>

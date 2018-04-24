@@ -26,6 +26,8 @@ private:
      int startX;
      int startY;
 
+     int fire_rate;
+
      Invader *(invader[5][11]);
 
      int invader_count;
