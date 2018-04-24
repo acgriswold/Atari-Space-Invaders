@@ -5,7 +5,6 @@
 #include <QGraphicsItem>
 #include <QGraphicsScene>
 #include <QDebug>
-#include <QMediaPlayer>
 
 #include "bullet.h"
 
@@ -38,9 +37,6 @@ private:
     bool right;
 
     bullet *bullt;
-
-    QMediaPlayer *fireSound;
-    QMediaPlayer *crabHit;
 };
 
 #endif // TANK_H

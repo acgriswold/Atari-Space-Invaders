@@ -10,8 +10,6 @@
 #include <QKeyEvent>
 #include <QDebug>
 #include <QMessageBox>
-#include <QMediaPlayer>
-#include <QMediaPlaylist>
 
 namespace Ui {
 class MainWindow;
@@ -55,8 +53,6 @@ private:
     QTimer *timer_friendly;
     QTimer *timer_foe;
     Gameplay *game;
-    QMediaPlaylist *playlist;
-    QMediaPlayer *backgroundMusic;
 };
 
 #endif // MAINWINDOW_H

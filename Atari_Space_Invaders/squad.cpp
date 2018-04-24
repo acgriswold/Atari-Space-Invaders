@@ -59,14 +59,9 @@ void Squad::moveSquad(){
                 //move the invader
                 invader[rows][cols]->move(currentX,currentY);
                 //check if the squad is at all the way to either side of the scene
-                if(invader[rows][cols]->x() + invader[rows][cols]->boundingRect().width() > maxX)
-                {
-                    maxX = invader[rows][cols]->x() + invader[rows][cols]->boundingRect().width();
-                }
-                else if(invader[rows][cols]->x() < minX)
-                {
-                    minX = invader[rows][cols]->x();
-                }
+                if(invader[rows][cols]->x() + invader[rows][cols]->boundingRect().width() > maxX){maxX = invader[rows][cols]->x() + invader[rows][cols]->boundingRect().width();}
+
+                if(invader[rows][cols]->x() < minX){minX = invader[rows][cols]->x();}
             }
         }
         //set the position for the next y move
@@ -74,13 +69,11 @@ void Squad::moveSquad(){
         currentX = startX;
     }
     //change the direction if the squad is at one of the sides
-    if((maxX + speed >= 650) || (minX + speed <= -650))
-    {
+    if((maxX + speed >= 650) || (minX + speed <= -650)){
         startY = startY + 40;
         speed = speed * -1;
     }
-    else
-    {
+    else{
         startX = startX + speed;
     }
 }
