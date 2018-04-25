@@ -24,6 +24,10 @@ private:
     QGraphicsScene *scene;
 
     int speed;
+    int jelly_score;
+
+signals:
+    void enemy_hit_j(int);
 };
 
 #endif // JELLY_H

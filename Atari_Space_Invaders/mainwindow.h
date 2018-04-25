@@ -40,6 +40,8 @@ private slots:
     void step_foe();
     void enemy_increase();
 
+    void show_jelly();
+
     void end_game();
 
     void on_start_button_clicked();
@@ -54,6 +56,7 @@ private:
     QGraphicsScene *scene;
     QTimer *timer_friendly;
     QTimer *timer_foe;
+    QTimer *timer_jelly;
     Gameplay *game;
     QMediaPlaylist *playlist;
     QMediaPlayer *backgroundMusic;

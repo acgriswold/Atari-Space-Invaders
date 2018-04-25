@@ -18,7 +18,7 @@ void Gameplay::renderGame(){
     renderTank();
     renderBunker();
     renderSquad(level);
-    renderJelly();
+    //renderJelly();
 }
 
 void Gameplay::renderBorder(){
@@ -45,6 +45,7 @@ void Gameplay::renderJelly(){
     Jelly *item = new Jelly(scene);
     jelly = item;
     scene->addItem(jelly);
+    connect(jelly, SIGNAL(enemy_hit_j(int)),this,SLOT(new_score(int)));
 }
 
 void Gameplay::renderBunker(){

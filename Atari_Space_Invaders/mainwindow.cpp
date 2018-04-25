@@ -40,6 +40,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer_foe, SIGNAL(timeout()), this, SLOT(step_foe()));
     timer_foe->start(1000);
 
+    timer_jelly = new QTimer(this);
+    connect(timer_jelly, SIGNAL(timeout()), this, SLOT(show_jelly()));
+    timer_jelly->start(30000);
+
     QTimer *timer1 = new QTimer(this);
     connect(timer1, SIGNAL(timeout()), scene, SLOT(advance()));
     timer1->start(55);
@@ -73,6 +77,10 @@ void MainWindow::step_foe(){
     if(ui->stackedWidget->currentIndex() == 1){
         game->squad_logic();
     }
+}
+
+void MainWindow::show_jelly(){
+    game->renderJelly();
 }
 
 void MainWindow::enemy_increase(){

@@ -129,4 +129,3 @@ int Squad::check(){
 
     return height;
 }
-
