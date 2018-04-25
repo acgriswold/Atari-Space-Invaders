@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/sounds">
-        <file>explosion.wav</file>
-        <file>gameMusic.mp3</file>
-        <file>shoot.wav</file>
-        <file>bubble.mp3</file>
-    </qresource>
-</RCC>
