@@ -50,7 +50,6 @@ void Invader::hit(){
     if(body == Dolphin){emit enemy_hit(40);}
     else if(body == Star){emit enemy_hit(20);}
     else if(body == Octo){emit enemy_hit(10);}
-    else if(body == Jelly){emit enemy_hit(150);}
 
     delete this;
 }

@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     tile.cpp \
     squad.cpp \
     invader.cpp \
-    bullet_enemy.cpp
+    bullet_enemy.cpp \
+    jelly.cpp
 
 HEADERS  += mainwindow.h \
     gameplay.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     tile.h \
     squad.h \
     invader.h \
-    bullet_enemy.h
+    bullet_enemy.h \
+    jelly.h
 
 FORMS    += mainwindow.ui
 

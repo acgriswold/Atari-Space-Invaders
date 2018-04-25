@@ -10,7 +10,7 @@
 
 #include "bullet_enemy.h"
 
-enum Typee{Dolphin, Star, Octo, Jelly};
+enum Typee{Dolphin, Star, Octo};
 
 class Invader : public QObject, public QGraphicsItem
 {

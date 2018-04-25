@@ -8,6 +8,7 @@
 #include "tank.h"
 #include "bunker.h"
 #include "squad.h"
+#include "jelly.h"
 
 class Gameplay : public QObject
 {
@@ -21,6 +22,7 @@ public:
     void renderTank();
     void renderBunker();
     void renderSquad(int lvl);
+    void renderJelly();
 
     void friendly_logic();
     void squad_logic();
@@ -49,6 +51,7 @@ private:
     Bunker *bunker;
     Tile *tile;
     Squad *squad;
+    Jelly *jelly;
 
     int score;
 

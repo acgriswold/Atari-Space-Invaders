@@ -18,6 +18,7 @@ void Gameplay::renderGame(){
     renderTank();
     renderBunker();
     renderSquad(level);
+    renderJelly();
 }
 
 void Gameplay::renderBorder(){
@@ -38,6 +39,12 @@ void Gameplay::renderTank(){
     Tank *item = new Tank(scene);
     tank = item;
     scene->addItem(tank);
+}
+
+void Gameplay::renderJelly(){
+    Jelly *item = new Jelly(scene);
+    jelly = item;
+    scene->addItem(jelly);
 }
 
 void Gameplay::renderBunker(){
