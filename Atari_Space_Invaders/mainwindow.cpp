@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     timer_friendly = new QTimer(this);
     connect(timer_friendly, SIGNAL(timeout()), this, SLOT(step_friendly()));
-    timer_friendly->start(1);
+    timer_friendly->start(3);
 
     timer_foe = new QTimer(this);
     connect(timer_foe, SIGNAL(timeout()), this, SLOT(step_foe()));
@@ -78,8 +78,8 @@ void MainWindow::step_foe(){
 void MainWindow::enemy_increase(){
     int currentint = timer_foe->interval();
     timer_foe->stop();
-    currentint -= 100;
-    if(currentint < 105){currentint = 105;}
+    currentint -= 50;
+    if(currentint < 500){currentint = 500;}
     timer_foe->start(currentint);
 }
 

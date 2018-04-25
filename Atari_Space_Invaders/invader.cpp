@@ -5,25 +5,25 @@ Invader::Invader(QGraphicsScene *scne, int startX, int startY, Typee tpe){
     //finding scene
     scene = scne;
 
+    sprite_index = 0;
+
     setPos(startX, startY);
 
     body = tpe;
 
     if(body == Dolphin){
-        brush.setTexture(QPixmap(":/friendlies/dolphin.png").scaledToWidth(33, Qt::SmoothTransformation));
+         brush.setTexture(QPixmap::fromImage(QPixmap(":/friendlies/dolphin2.png").scaledToWidth(33, Qt::SmoothTransformation).toImage().mirrored(true, false)));
     }
     else if (body == Star){
-        brush.setTexture(QPixmap(":/friendlies/star.png").scaledToWidth(33, Qt::SmoothTransformation));
+        brush.setTexture(QPixmap::fromImage(QPixmap(":/friendlies/star2.png").scaledToWidth(33, Qt::SmoothTransformation).toImage().mirrored(true, false)));
     }
     else if (body == Octo){
-        brush.setTexture(QPixmap(":/friendlies/octopus.png").scaledToWidth(33, Qt::SmoothTransformation));
-    }
-    else if (body == Jelly){
-        brush.setTexture(QPixmap(":/friendlies/bubble.png").scaledToWidth(33, Qt::SmoothTransformation));
+        brush.setTexture(QPixmap::fromImage(QPixmap(":/friendlies/octopus2.png").scaledToWidth(33, Qt::SmoothTransformation).toImage().mirrored(true, false)));
     }
     //set the firing sound for the invaders
     fireSound = new QMediaPlayer();
     fireSound->setMedia(QUrl("qrc:sounds/bubble.mp3"));
+    fireSound->setVolume(75);
 }
 
 QRectF Invader::boundingRect() const{
@@ -43,7 +43,7 @@ void Invader::advance(int phase){
     }
 }
 
-void Invader::hit(){    
+void Invader::hit(){
     scene->removeItem(scene->collidingItems(this)[0]);
     scene->removeItem(this);
 
@@ -57,6 +57,61 @@ void Invader::hit(){
 
 void Invader::move(int x, int y){
     setPos(x, y);
+}
+
+void Invader::cycle_sprite(int spd){
+    if(sprite_index == 1){
+        if(spd < 0){
+            if(body == Dolphin){
+                brush.setTexture(QPixmap(":/friendlies/dolphin2.png").scaledToWidth(33, Qt::SmoothTransformation));
+            }
+            else if (body == Star){
+                brush.setTexture(QPixmap(":/friendlies/star2.png").scaledToWidth(33, Qt::SmoothTransformation));
+            }
+            else if (body == Octo){
+                brush.setTexture(QPixmap(":/friendlies/octopus2.png").scaledToWidth(33, Qt::SmoothTransformation));
+            }
+        }
+        else {
+            if(body == Dolphin){
+                 brush.setTexture(QPixmap::fromImage(QPixmap(":/friendlies/dolphin2.png").scaledToWidth(33, Qt::SmoothTransformation).toImage().mirrored(true, false)));
+            }
+            else if (body == Star){
+                brush.setTexture(QPixmap::fromImage(QPixmap(":/friendlies/star2.png").scaledToWidth(33, Qt::SmoothTransformation).toImage().mirrored(true, false)));
+            }
+            else if (body == Octo){
+                brush.setTexture(QPixmap::fromImage(QPixmap(":/friendlies/octopus2.png").scaledToWidth(33, Qt::SmoothTransformation).toImage().mirrored(true, false)));
+            }
+        }
+    }
+    else{
+        if(spd < 0){
+            if(body == Dolphin){
+                brush.setTexture(QPixmap(":/friendlies/dolphin.png").scaledToWidth(33, Qt::SmoothTransformation));
+            }
+            else if (body == Star){
+                brush.setTexture(QPixmap(":/friendlies/star.png").scaledToWidth(33, Qt::SmoothTransformation));
+            }
+            else if (body == Octo){
+                brush.setTexture(QPixmap(":/friendlies/octopus.png").scaledToWidth(33, Qt::SmoothTransformation));
+            }
+        }
+        else {
+            if(body == Dolphin){
+                 brush.setTexture(QPixmap::fromImage(QPixmap(":/friendlies/dolphin.png").scaledToWidth(33, Qt::SmoothTransformation).toImage().mirrored(true, false)));
+            }
+            else if (body == Star){
+                brush.setTexture(QPixmap::fromImage(QPixmap(":/friendlies/star.png").scaledToWidth(33, Qt::SmoothTransformation).toImage().mirrored(true, false)));
+            }
+            else if (body == Octo){
+                brush.setTexture(QPixmap::fromImage(QPixmap(":/friendlies/octopus.png").scaledToWidth(33, Qt::SmoothTransformation).toImage().mirrored(true, false)));
+            }
+        }
+    }
+    sprite_index++;
+    if(sprite_index >= 2)
+        sprite_index = 0;
+
 }
 
 void Invader::fire(){

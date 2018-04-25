@@ -23,7 +23,7 @@ Tank::Tank(QGraphicsScene *scne){
 
     setPos(startX, startY);
 
-    brush.setTexture(QPixmap(":/friendlies/crab.png").scaledToHeight(32, Qt::SmoothTransformation));
+    brush.setTexture(QPixmap(":/friendlies/crab.png").scaledToHeight(64, Qt::SmoothTransformation));
 
     //set the firing sound for the tank
     fireSound = new QMediaPlayer();
@@ -34,7 +34,7 @@ Tank::Tank(QGraphicsScene *scne){
 }
 
 QRectF Tank::boundingRect() const{
-    return QRect(0, 0, 64, 32);
+    return QRect(0, 0, 64, 64);
 }
 
 void Tank::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
@@ -67,7 +67,6 @@ void Tank::movement(){
             qDebug() << "Fire!";
             bullt = new bullet(this->x(), this->y());
             scene->addItem(bullt);
-            //play the firing sound for the tank
             fireSound->play();
         }
     }
@@ -101,10 +100,9 @@ void Tank::disable_move(Move mve){
 }
 
 void Tank::hit(){
-    crabHit->play();
     qDebug() << "hit!";
     //scene->removeItem(scene->collidingItems(this)[0]);
-
+    crabHit->play();
     scene->removeItem(this);
     delete this;
 }

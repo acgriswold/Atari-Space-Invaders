@@ -38,7 +38,6 @@ private:
     bool right;
 
     bullet *bullt;
-
     QMediaPlayer *fireSound;
     QMediaPlayer *crabHit;
 };

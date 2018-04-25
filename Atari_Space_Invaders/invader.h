@@ -23,6 +23,8 @@ public:
     void fire();
     void move(int x, int y);
 
+    void cycle_sprite(int spd);
+
 private slots:
     void advance(int phase);
 
@@ -33,6 +35,7 @@ private:
     QGraphicsScene *scene;
     QBrush brush;
     Typee body;
+    int sprite_index;
 
     void hit();
 

@@ -91,6 +91,7 @@ void Gameplay::friendly_logic(){
 void Gameplay::squad_logic(){
     squad->moveSquad();
     squad->fireSquad();
+    if(squad->check() >= 250){emit collision();}
 }
 
 int Gameplay::get_current_score(){

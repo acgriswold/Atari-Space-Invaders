@@ -13,6 +13,8 @@ public:
     void moveSquad();
     void fireSquad();
 
+    int check();
+
 signals:
    void add_score(int);
    void level_complete();
@@ -25,6 +27,8 @@ private:
      int speed;
      int startX;
      int startY;
+
+     int fire_rate;
 
      Invader *(invader[5][11]);
 
