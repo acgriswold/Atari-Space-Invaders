@@ -10,5 +10,6 @@ Right: D
 Up: W
 Down: S
 Shoot: Space
+Quit: Esc
 
 Be safe out there, because sometimes, the water isn't as fine as it seems
