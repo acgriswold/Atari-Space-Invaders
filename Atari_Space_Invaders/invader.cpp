@@ -115,8 +115,9 @@ void Invader::cycle_sprite(int spd){
 
 void Invader::fire(){
     qDebug() << "Enemy Fire!";
-    bullet_enemy *bullt = new bullet_enemy(this->x(), (this->y()+this->boundingRect().height()));
-    scene->addItem(bullt);
+
     //play the firing sound for the invaders
     fireSound->play();
+    bullet_enemy *bullt = new bullet_enemy(this->x(), (this->y()+this->boundingRect().height()));
+    scene->addItem(bullt);
 }

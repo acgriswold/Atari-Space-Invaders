@@ -6,6 +6,10 @@ Gameplay::Gameplay(QGraphicsScene *scne){
     lives = 3;
     level = 0;
     score = 0;
+
+    //set the explosion sound when the crab is hit
+    crabHit = new QMediaPlayer();
+    crabHit->setMedia(QUrl(":/sounds/explosion.wav"));
 }
 
 Gameplay::~Gameplay(){
@@ -68,10 +72,7 @@ void Gameplay::renderSquad(int lvl){
 
 void Gameplay::propose_move(Move mve){
     if(scene->items().indexOf(tank) >= 0){
-        if(mve == Hit){ squad->fireSquad();}//tank->hit(); lives--;}
-        else{
-            tank->set_move(mve);
-        }
+        tank->set_move(mve);
     }
 }
 
@@ -91,7 +92,10 @@ void Gameplay::friendly_logic(){
             if(lives >= 0){
                 renderTank();
             }
-            else{emit collision();}
+            else{
+                crabHit->play();
+                emit collision();
+            }
         }
     }
 }

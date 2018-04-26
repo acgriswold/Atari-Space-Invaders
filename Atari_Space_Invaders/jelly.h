@@ -6,6 +6,8 @@
 #include <QGraphicsScene>
 #include <QDebug>
 
+enum Dir{lft, rght};
+
 class Jelly  : public QObject, public QGraphicsItem
 {
     Q_OBJECT
@@ -16,6 +18,7 @@ public:
 
     void hit();
 
+    void cycle_sprite();
 protected:
     void advance(int phase);
 
@@ -25,6 +28,9 @@ private:
 
     int speed;
     int jelly_score;
+    int counter;
+
+    Dir dir;
 
 signals:
     void enemy_hit_j(int);

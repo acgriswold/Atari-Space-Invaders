@@ -53,6 +53,8 @@ private:
     Squad *squad;
     Jelly *jelly;
 
+    QMediaPlayer *crabHit;
+
     int score;
 
     int lives;

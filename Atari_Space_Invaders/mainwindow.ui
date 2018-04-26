@@ -240,7 +240,7 @@
         <x>540</x>
         <y>130</y>
         <width>211</width>
-        <height>261</height>
+        <height>291</height>
        </rect>
       </property>
       <property name="font">
@@ -254,7 +254,9 @@
 Right:D
 Up: W
 Down: S
-Fire: Space</string>
+Fire: Space
+
+Quit: Esc</string>
       </property>
       <property name="textFormat">
        <enum>Qt::AutoText</enum>

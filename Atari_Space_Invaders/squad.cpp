@@ -3,7 +3,7 @@
 Squad::Squad(QGraphicsScene *scne, int lvl)
 {
     scene = scne;
-    speed = 50;
+    speed = 32;
     fire_rate = 10;
 
     //set the position
@@ -49,7 +49,6 @@ void Squad::moveSquad(){
     int maxX = -650;
     int minX = 650;
 
-    invader_count;
     for(int rows = 0; rows <= 4; rows++)
     {
         for(int cols = 0; cols <= 10; cols++)
@@ -107,7 +106,6 @@ void Squad::enemy_value(int b){
     invader_count--;
     if(invader_count <= 0){
         emit level_complete();
-
         if(fire_rate <= 75)fire_rate+=5;
     }
 }
@@ -129,3 +127,4 @@ int Squad::check(){
 
     return height;
 }
+

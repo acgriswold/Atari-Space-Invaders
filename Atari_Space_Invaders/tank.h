@@ -9,7 +9,7 @@
 
 #include "bullet.h"
 
-enum Move{Left, Right, Fire, Hit};
+enum Move{Left, Right, Fire};
 
 class Tank : public QGraphicsItem
 {
@@ -39,7 +39,6 @@ private:
 
     bullet *bullt;
     QMediaPlayer *fireSound;
-    QMediaPlayer *crabHit;
 };
 
 #endif // TANK_H

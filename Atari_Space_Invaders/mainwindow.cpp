@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /*Working with arrow keys for Khadka*/
     //press handling
-    /*QShortcut *shortcutUp = new QShortcut(QKeySequence("Up"), this);
+    QShortcut *shortcutUp = new QShortcut(QKeySequence("Up"), this);
     QObject::connect(shortcutUp, SIGNAL(activated()), this, SLOT(on_up_pressed()));
     QShortcut *shortcutLeft = new QShortcut(QKeySequence("Left"), this);
     QObject::connect(shortcutLeft, SIGNAL(activated()), this, SLOT(on_left_pressed()));
@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //Release handling
     QObject::connect(shortcutUp, SIGNAL(deactivated()), this, SLOT(on_up_released()));
     QObject::connect(shortcutLeft, SIGNAL(deactivated()), this, SLOT(on_left_released()));
-    QObject::connect(shortcutRight, SIGNAL(deactivated()), this, SLOT(on_right_released()));*/
+    QObject::connect(shortcutRight, SIGNAL(deactivated()), this, SLOT(on_right_released()));
 
     timer_friendly = new QTimer(this);
     connect(timer_friendly, SIGNAL(timeout()), this, SLOT(step_friendly()));
@@ -80,7 +80,9 @@ void MainWindow::step_foe(){
 }
 
 void MainWindow::show_jelly(){
-    game->renderJelly();
+    if(ui->stackedWidget->currentIndex() == 1){
+        game->renderJelly();
+    }
 }
 
 void MainWindow::enemy_increase(){
@@ -101,9 +103,6 @@ void MainWindow::keyPressEvent(QKeyEvent *e){
     else if(e->key() == Qt::Key_Space){
         game->propose_move(Fire);
     }
-    else if(e->key() == Qt::Key_H){
-        game->propose_move(Hit);
-    }
 }
 
 void MainWindow::keyReleaseEvent(QKeyEvent *e){
@@ -116,9 +115,25 @@ void MainWindow::keyReleaseEvent(QKeyEvent *e){
     else if(e->key() == Qt::Key_Space){
         game->propose_disable(Fire);
     }
+    else if(e->key() == Qt::Key_Escape){
+        timer_friendly->stop();
+        timer_foe->stop();
+        timer_jelly->stop();
+
+        bool close = false;
+        if (QMessageBox::Yes == QMessageBox::question(this, "Close Confirmation", "Are you sure you want to quite?  Your progress will not be saved", QMessageBox::Yes | QMessageBox::No)) {
+            close = true;
+        }
+        else {
+            timer_friendly->start();
+            timer_foe->start();
+            timer_jelly->start();
+        }
+        if(close) this->close();
+    }
 }
 
-/*void MainWindow::on_left_pressed(){
+void MainWindow::on_left_pressed(){
     game->propose_move(Left);
 }
 void MainWindow::on_right_pressed(){
@@ -135,11 +150,12 @@ void MainWindow::on_right_release(){
 }
 void MainWindow::on_up_release(){
     game->propose_disable(Fire);
-}*/
+}
 
 void MainWindow::end_game(){
     timer_friendly->stop();
     timer_foe->stop();
+    timer_jelly->stop();
 
     QString message = "You successfully defended the nation!  For a couple days that is... we still got obliterated... Try again?";
 

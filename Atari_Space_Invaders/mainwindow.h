@@ -29,12 +29,12 @@ public:
     void keyReleaseEvent(QKeyEvent* e);
 
 private slots:
-    /*void on_up_pressed();
+    void on_up_pressed();
     void on_left_pressed();
     void on_right_pressed();
     void on_up_release();
     void on_left_release();
-    void on_right_release();*/
+    void on_right_release();
 
     void step_friendly();
     void step_foe();
